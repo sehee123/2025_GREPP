@@ -70,6 +70,16 @@ public class Main {
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println(n+"번 게시글은 존재하지 않습니다.");
                 }
+            }else if(command.equals("목록")){
+                System.out.println("총 게시글은 " + board.size() + "개 작성되어있습니다.");
+                int idx = 0;
+                for (String[] strings : board) {
+                    idx ++;
+                    System.out.println(idx+"번 게시글");
+                    System.out.println("제목 : " + strings[0]);
+                    System.out.println("내용 : " + strings[1]);
+                    System.out.println();
+                }
             }
         }
 
