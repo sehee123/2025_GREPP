@@ -29,32 +29,47 @@ public class Main {
                 arr[1] = content;
 
                 board.push(arr);
+
             }else if(command.equals("조회")){
                 System.out.print("어떤 게시물을 조회할까요? " );
                 int n = Integer.parseInt(sc.next());
 
-                System.out.println("제목 : [" + board.get(n-1)[0] + "]");
-                System.out.println("내용 : [" + board.get(n-1)[1] + "]");
+                try {
+                    System.out.println("제목 : [" + board.get(n-1)[0] + "]");
+                    System.out.println("내용 : [" + board.get(n-1)[1] + "]");
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println(n + " 게시글은 존재하지 않습니다.");
+                }
             }else if(command.equals("삭제")){
                 System.out.print("어떤 게시물을 삭제할까요? " );
                 int n = Integer.parseInt(sc.next());
 
-                board.remove(n-1);
-                System.out.println(n + "번 게시물이 성공적으로 삭제되었습니다!");
+                try {
+                    board.remove(n-1);
+                    System.out.println(n + "번 게시물이 성공적으로 삭제되었습니다!");
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println(n+"번 게시글은 존재하지 않습니다.");
+                }
             }else if (command.equals("수정")){
                 System.out.println("어떤 게시물을 수정할까요? " );
                 int n = Integer.parseInt(sc.next());
-                System.out.print(n + "번 게시물을 수정합니다" );
-                String[] arr = new String[2];
-                System.out.print("제목 : ");
-                String title = sc.next();
-                System.out.print("내용 : ");
-                String content = sc.next();
 
-                arr[0] = title;
-                arr[1] = content;
-                board.remove(n-1);
-                board.add(n-1 , arr);
+                try {
+                    board.remove(n-1);
+                    System.out.print(n + "번 게시물을 수정합니다" );
+                    String[] arr = new String[2];
+                    System.out.print("제목 : ");
+                    String title = sc.next();
+                    System.out.print("내용 : ");
+                    String content = sc.next();
+
+                    arr[0] = title;
+                    arr[1] = content;
+
+                    board.add(n-1 , arr);
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println(n+"번 게시글은 존재하지 않습니다.");
+                }
             }
         }
 
