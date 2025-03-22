@@ -15,8 +15,9 @@ public class Main {
             if(str.equals("exit")){
                 System.out.println("프로그램이 종료됩니다.");
                 break;
+            }else{
+                System.out.println("존쟇지않는 명령어 입니다.");
             }
-            System.out.println(str);
         }
 
     }
